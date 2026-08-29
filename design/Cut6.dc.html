@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+    *{box-sizing:border-box;}
+    body{margin:0;}
+    a{color:#FFC93C;}
+    a:hover{color:#e0ac1f;}
+    .frame{
+      width:1080px;height:1350px;position:relative;overflow:hidden;z-index:0;
+      background:linear-gradient(160deg,#101c30 0%,#0a1420 100%);
+      font-family:'Noto Sans KR',sans-serif;color:#F5F7FA;
+      display:flex;flex-direction:column;align-items:center;text-align:center;
+      padding:100px 90px;
+    }
+    .kicker{font-size:22px;letter-spacing:6px;color:#FFC93C;font-weight:700;}
+    .icon-badge{
+      width:340px;height:340px;border-radius:50%;
+      border:2px dashed rgba(255,201,60,0.35);background:rgba(255,201,60,0.06);
+      display:flex;align-items:center;justify-content:center;margin-top:60px;flex-shrink:0;
+    }
+    .headline{
+      font-family:'Black Han Sans',sans-serif;font-size:56px;line-height:1.3;
+      color:#F5F7FA;margin:50px 0 0 0;font-weight:400;
+    }
+    .spacer{flex:1;}
+    .cta-box{
+      margin-top:30px;background:#FFC93C;color:#0a1420;font-weight:700;font-size:26px;
+      padding:22px 40px;border-radius:60px;display:inline-flex;align-items:center;gap:14px;
+    }
+    .footer-logo{position:absolute;right:70px;bottom:56px;font-size:18px;letter-spacing:2px;color:rgba(255,255,255,0.45);font-weight:700;}
+    .page-indicator{position:absolute;left:70px;bottom:56px;font-size:18px;color:rgba(255,255,255,0.35);letter-spacing:2px;}
+  </style>
+</helmet>
+<div class="frame">
+  <div class="kicker">SUMMARY</div>
+  <div class="icon-badge">
+    <svg viewBox="0 0 240 240" width="180" height="180" fill="none">
+      <path d="M60 20 H180 V220 L120 175 L60 220 Z" stroke="#FFC93C" stroke-width="9" stroke-linejoin="round" fill="none"/>
+    </svg>
+  </div>
+  <h2 class="headline">AI 붐의 대가,<br/>결국 우리 지갑으로 온다</h2>
+  <div class="spacer"></div>
+  <div class="cta-box">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 3h12v18l-6-4.5L6 21V3z" stroke="#0a1420" stroke-width="2" stroke-linejoin="round"/></svg>
+    <span>저장하고 다음 구매 타이밍 참고하기</span>
+  </div>
+  <div class="page-indicator">06 / 06</div>
+  <div class="footer-logo">@econo.card</div>
+</div>
+</x-dc>
+</body>
+</html>

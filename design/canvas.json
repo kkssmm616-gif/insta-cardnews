@@ -1,0 +1,11 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "x": 0, "y": 0, "w": 1080, "h": 1350 },
+    { "file": "Cut2.dc.html", "x": 1220, "y": 0, "w": 1080, "h": 1350 },
+    { "file": "Cut3.dc.html", "x": 2440, "y": 0, "w": 1080, "h": 1350 },
+    { "file": "Cut4.dc.html", "x": 3660, "y": 0, "w": 1080, "h": 1350 },
+    { "file": "Cut5.dc.html", "x": 4880, "y": 0, "w": 1080, "h": 1350 },
+    { "file": "Cut6.dc.html", "x": 6100, "y": 0, "w": 1080, "h": 1350 }
+  ],
+  "launch": { "view": "canvas" }
+}
