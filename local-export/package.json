@@ -1,0 +1,10 @@
+{
+  "name": "cardnews-local-export",
+  "private": true,
+  "version": "1.0.0",
+  "description": "매일 GitHub Pages에 올라온 카드뉴스 6컷을 이미지로 캡처해 OneDrive로 저장 (인스타 업로드용)",
+  "type": "commonjs",
+  "dependencies": {
+    "playwright": "^1.48.0"
+  }
+}
