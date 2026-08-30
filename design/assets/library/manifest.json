@@ -11,97 +11,170 @@
       "설명": "금리 (한국은행/연준 기준금리, 대출금리 등)",
       "keywords": ["금리", "기준금리", "연준", "한국은행", "대출", "interest rate", "central bank", "fed"],
       "photos": [
-        {
-          "file": "interest_rate/fed_building_01.jpg",
-          "desc": "시카고 연방준비은행 건물 외관 (컬럼, 성조기)",
-          "source": "https://unsplash.com/photos/a-large-building-with-columns-and-a-flag-on-the-corner-Skfy8ljB7X4"
-        },
-        {
-          "file": "interest_rate/coins_stack_01.jpg",
-          "desc": "높이가 점점 커지는 동전 더미 5줄 (금리/자산 상승 은유)",
-          "source": "https://unsplash.com/photos/stacks-of-coins-increasing-in-height-from-left-to-right-894I850Hyl0"
-        }
+        { "file": "interest_rate/fed_building_01.jpg", "desc": "시카고 연방준비은행 건물 외관 (컬럼, 성조기)", "source": "https://unsplash.com/photos/a-large-building-with-columns-and-a-flag-on-the-corner-Skfy8ljB7X4" },
+        { "file": "interest_rate/coins_stack_01.jpg", "desc": "높이가 점점 커지는 동전 더미 5줄 (금리/자산 상승 은유)", "source": "https://unsplash.com/photos/stacks-of-coins-increasing-in-height-from-left-to-right-894I850Hyl0" },
+        { "file": "interest_rate/03.jpg", "desc": "회색 콘크리트 은행 건물 외관 (몬트리올)", "source": "https://unsplash.com/photos/grey-concrete-building-2_K82gx9Uk8" },
+        { "file": "interest_rate/04.jpg", "desc": "First National Bank 건물 정문 (은행명 각인, 브랜드 로고 아님)", "source": "https://unsplash.com/photos/first-national-bank-building-Q94c1s1P_9M" },
+        { "file": "interest_rate/05.jpg", "desc": "Federal Reserve Bank of Chicago 건물 외관, 거리 표지판", "source": "https://unsplash.com/photos/federal-reserve-bank-of-chicago-building-street-light-and-bollards-74Fa_EIeLsY" },
+        { "file": "interest_rate/06.jpg", "desc": "어두운 배경의 네온 퍼센트(%) 기호", "source": "https://unsplash.com/photos/a-glowing-neon-percentage-sign-on-a-dark-background-y9o2rBD8gxs" },
+        { "file": "interest_rate/07.jpg", "desc": "현대적 유리 오피스 빌딩, 녹색 조경 (방콕)", "source": "https://unsplash.com/photos/modern-glass-building-with-green-landscaping-atYoXjIr8qY" },
+        { "file": "interest_rate/08.jpg", "desc": "프랑크푸르트 스카이라인과 ECB(유럽중앙은행) 건물, 강과 다리", "source": "https://unsplash.com/photos/frankfurt-skyline-with-river-bridge-and-modern-skyscraper-XiIcLJzaHV0" }
       ]
     },
     "exchange_rate": {
       "설명": "환율 (원달러, 외환시장 등)",
       "keywords": ["환율", "원달러", "외환", "달러", "exchange rate", "forex", "currency"],
       "photos": [
-        {
-          "file": "exchange_rate/led_board_01.jpg",
-          "desc": "런던 환전소 'BEST RATES' LED 전광판",
-          "source": "https://unsplash.com/photos/7JoXNRbx6Qg"
-        },
-        {
-          "file": "exchange_rate/phone_forex_01.jpg",
-          "desc": "손가락으로 스마트폰 환율/증시 시세 화면을 가리키는 모습 (얼굴 없음, 손만 노출)",
-          "source": "https://unsplash.com/photos/OmPqCwX422Y"
-        }
+        { "file": "exchange_rate/led_board_01.jpg", "desc": "런던 환전소 'BEST RATES' LED 전광판", "source": "https://unsplash.com/photos/7JoXNRbx6Qg" },
+        { "file": "exchange_rate/phone_forex_01.jpg", "desc": "손가락으로 스마트폰 환율/증시 시세 화면을 가리키는 모습 (얼굴 없음, 손만 노출)", "source": "https://unsplash.com/photos/OmPqCwX422Y" },
+        { "file": "exchange_rate/03.jpg", "desc": "다양한 유로화 지폐 더미 (인물 초상 없음)", "source": "https://unsplash.com/photos/photo-1621280336935-ed7cae618aac" },
+        { "file": "exchange_rate/04.jpg", "desc": "어두운 화면의 캔들스틱 하락 차트", "source": "https://unsplash.com/photos/photo-1611974789855-9c2a0a7236a3" },
+        { "file": "exchange_rate/05.jpg", "desc": "컴퓨터 화면의 상승 캔들스틱 차트 클로즈업", "source": "https://unsplash.com/photos/photo-1634542984003-e0fb8e200e91" },
+        { "file": "exchange_rate/06.jpg", "desc": "노트북 화면 속 글로벌 증시 지수 리스트 (숫자만, 인물 없음)", "source": "https://unsplash.com/photos/graphical-user-interface-application-x07ELaNFt34" },
+        { "file": "exchange_rate/07.jpg", "desc": "5·10유로 지폐 클로즈업 (인물 초상 없음)", "source": "https://unsplash.com/photos/euro-banknotes-fanned-out-showing-denominations-Kfnl3CJIL30" },
+        { "file": "exchange_rate/08.jpg", "desc": "손으로 그래프 자료를 가리키며 계산기 사용하는 모습 (얼굴 없음)", "source": "https://unsplash.com/photos/a-calculator-sitting-on-top-of-a-table-next-to-a-laptop-LgE3whpa5VA" }
+      ]
+    },
+    "banking_finance": {
+      "설명": "은행/금융서비스 (ATM, 결제 단말기, 저축 등 특정 브랜드 로고 없는 범용 이미지)",
+      "keywords": ["은행", "atm", "금융", "카드결제", "저축", "banking", "finance", "bank branch", "savings"],
+      "photos": [
+        { "file": "banking_finance/01.jpg", "desc": "ATM 키패드를 누르는 손 클로즈업 (얼굴 없음)", "source": "https://unsplash.com/photos/person-pressing-metallic-atm-keypad-utWyPB8_FU8" },
+        { "file": "banking_finance/02.jpg", "desc": "야간 ATM 표지판이 켜진 건물 외관", "source": "https://unsplash.com/photos/a-building-with-a-atm-sign-lit-up-at-night-7Q1lhdgbyNU" },
+        { "file": "banking_finance/03.jpg", "desc": "흑백 톤의 일반 ATM 기기 (브랜드 로고 없음)", "source": "https://unsplash.com/photos/grayscale-photo-of-atm-machine-9f7s4aLatpw" },
+        { "file": "banking_finance/04.jpg", "desc": "주황 배경 위 결제 단말기와 영수증 (브랜드 로고 없음)", "source": "https://unsplash.com/photos/payment-terminal-with-white-receipt-xkArbdUcUeE" },
+        { "file": "banking_finance/05.jpg", "desc": "분홍 돼지저금통과 금화 더미", "source": "https://unsplash.com/photos/piggy-bank-with-gold-coins-heYdDdq0cbE" },
+        { "file": "banking_finance/06.jpg", "desc": "구형 ATM 키패드 클로즈업 (브랜드 로고 없음)", "source": "https://unsplash.com/photos/black-and-gray-digital-device-CdYiBHnksAQ" },
+        { "file": "banking_finance/07.jpg", "desc": "손으로 백지 카드를 결제 단말기에 대는 모습, 주황 배경 (얼굴 없음, 브랜드 로고 없음)", "source": "https://unsplash.com/photos/person-using-credit-card-payment-terminal-HNPrWOH2Z8U" },
+        { "file": "banking_finance/08.jpg", "desc": "네온 ATM 간판이 빛나는 야간 골목 (붉은/보라 톤)", "source": "https://unsplash.com/photos/lighted-atm-eYZpTMc7hno" }
       ]
     },
     "stock_market": {
       "설명": "증시 (코스피, 나스닥, 주식/투자 심리 등)",
       "keywords": ["증시", "주식", "코스피", "나스닥", "투자", "stock market", "trading", "chart"],
       "photos": [
-        {
-          "file": "stock_market/laptop_chart_01.jpg",
-          "desc": "노트북 화면에 표시된 캔들스틱 트레이딩 차트 (사람 없음)",
-          "source": "https://unsplash.com/photos/laptop-displays-a-stock-market-trading-chart-jW7C-KidYi0"
-        },
-        {
-          "file": "stock_market/trading_touchscreen_01.jpg",
-          "desc": "태블릿 캔들스틱 차트를 손으로 가리키는 모습, 배경에 멀티 모니터 시세 화면 (얼굴 없음)",
-          "source": "https://unsplash.com/photos/trader-analyzing-stock-market-charts-on-multiple-screens-j_hho1mE47s"
-        }
+        { "file": "stock_market/laptop_chart_01.jpg", "desc": "노트북 화면에 표시된 캔들스틱 트레이딩 차트 (사람 없음)", "source": "https://unsplash.com/photos/laptop-displays-a-stock-market-trading-chart-jW7C-KidYi0" },
+        { "file": "stock_market/trading_touchscreen_01.jpg", "desc": "태블릿 캔들스틱 차트를 손으로 가리키는 모습, 배경에 멀티 모니터 시세 화면 (얼굴 없음)", "source": "https://unsplash.com/photos/trader-analyzing-stock-market-charts-on-multiple-screens-j_hho1mE47s" },
+        { "file": "stock_market/03.jpg", "desc": "붉은/초록 캔들스틱 차트 클로즈업, 다운트렌드", "source": "https://unsplash.com/photos/fiXLQXAhCfk" },
+        { "file": "stock_market/04.jpg", "desc": "블러 처리된 멀티 모니터 주가 그래프 화면", "source": "https://unsplash.com/photos/Wb63zqJ5gnE" },
+        { "file": "stock_market/05.jpg", "desc": "지수 시세판과 캔들스틱 차트 클로즈업", "source": "https://unsplash.com/photos/3r8rcSy0Ffg" },
+        { "file": "stock_market/06.jpg", "desc": "황소상(월스트리트 불 마켓 상징) 클로즈업", "source": "https://unsplash.com/photos/wn57cSQ7VzI" },
+        { "file": "stock_market/07.jpg", "desc": "뉴욕증권거래소(NYSE) 건물 외관, 성조기", "source": "https://unsplash.com/photos/mHdATQY9fIU" },
+        { "file": "stock_market/08.jpg", "desc": "온라인 증권 거래 대시보드 화면 클로즈업", "source": "https://unsplash.com/photos/x07ELaNFt34" }
       ]
     },
     "real_estate": {
       "설명": "부동산 (아파트, 주택시장, 패닉바잉 등)",
       "keywords": ["부동산", "아파트", "주택", "매매", "전세", "real estate", "apartment", "housing"],
       "photos": [
-        {
-          "file": "real_estate/apartment_exterior_01.jpg",
-          "desc": "노을빛 아파트 발코니 외관, 나무와 하늘 배경",
-          "source": "https://unsplash.com/photos/apartment-building-exterior-with-trees-and-sky-gEySCQFjRdk"
-        },
-        {
-          "file": "real_estate/apartment_exterior_02.jpg",
-          "desc": "빼곡한 초고층 아파트 창문 패턴 클로즈업 (홍콩 스타일 고밀도 주거)",
-          "source": "https://unsplash.com/photos/modern-apartment-buildings-with-many-windows-XdSij4UOj0E"
-        }
+        { "file": "real_estate/apartment_exterior_01.jpg", "desc": "노을빛 아파트 발코니 외관, 나무와 하늘 배경", "source": "https://unsplash.com/photos/apartment-building-exterior-with-trees-and-sky-gEySCQFjRdk" },
+        { "file": "real_estate/apartment_exterior_02.jpg", "desc": "빼곡한 초고층 아파트 창문 패턴 클로즈업 (홍콩 스타일 고밀도 주거)", "source": "https://unsplash.com/photos/modern-apartment-buildings-with-many-windows-XdSij4UOj0E" },
+        { "file": "real_estate/03.jpg", "desc": "모던 아파트 건물 외관, 파란 하늘", "source": "https://unsplash.com/photos/koH7IVuwRLw" },
+        { "file": "real_estate/04.jpg", "desc": "저녁 노을 아파트 단지 전경, 조경", "source": "https://unsplash.com/photos/s34TlUTPIf4" },
+        { "file": "real_estate/05.jpg", "desc": "고층 아파트 외관, 노을빛", "source": "https://unsplash.com/photos/5q1KnUjtjaM" },
+        { "file": "real_estate/06.jpg", "desc": "고층 아파트 여러 동, 맑은 하늘", "source": "https://unsplash.com/photos/_r80LCluvVM" },
+        { "file": "real_estate/07.jpg", "desc": "모델하우스풍 거실 인테리어", "source": "https://unsplash.com/photos/AB-q9lwCVv8" },
+        { "file": "real_estate/08.jpg", "desc": "노을 진 고층 아파트 발코니 클로즈업", "source": "https://unsplash.com/photos/4453DIQWtsQ" }
+      ]
+    },
+    "employment_labor": {
+      "설명": "고용/노동 (취업, 구직, 일자리, 사무실 등 — 얼굴 클로즈업 없음)",
+      "keywords": ["고용", "취업", "구직", "일자리", "노동시장", "employment", "job", "labor market", "office"],
+      "photos": [
+        { "file": "employment_labor/01.jpg", "desc": "빈 회의실, 통유리창", "source": "https://unsplash.com/photos/eHD8Y1Znfpk" },
+        { "file": "employment_labor/02.jpg", "desc": "빈 카페형 사무실 라운지", "source": "https://unsplash.com/photos/PYqzYhTNjho" },
+        { "file": "employment_labor/03.jpg", "desc": "유리 파티션 사무실 복도", "source": "https://unsplash.com/photos/yWwob8kwOCk" },
+        { "file": "employment_labor/04.jpg", "desc": "빈 데스크와 모니터, 오피스 공간(배경 인물 원경·얼굴 식별 불가)", "source": "https://unsplash.com/photos/FSFfEQkd1sc" },
+        { "file": "employment_labor/05.jpg", "desc": "코워킹 라운지, 사람 없음", "source": "https://unsplash.com/photos/VCoh27vHEh0" },
+        { "file": "employment_labor/06.jpg", "desc": "창가 스탠딩 데스크 노트북, 도시 전망", "source": "https://unsplash.com/photos/VWcPlbHglYc" },
+        { "file": "employment_labor/07.jpg", "desc": "코워킹 스페이스 좌석 공간", "source": "https://unsplash.com/photos/Becc3eg9-l0" },
+        { "file": "employment_labor/08.jpg", "desc": "모던 오피스 로비/리셉션 데스크", "source": "https://unsplash.com/photos/an-office-reception-area-with-modern-architecture--lxj69ckDCA" }
       ]
     },
     "inflation_prices": {
       "설명": "물가/인플레이션 (장바구니 물가, 생활비 등)",
       "keywords": ["물가", "인플레이션", "장바구니", "생활비", "식료품", "inflation", "grocery", "prices"],
       "photos": [
-        {
-          "file": "inflation_prices/grocery_aisle_01.jpg",
-          "desc": "슈퍼마켓 진열대 통로, 가격표(PRICES DROPPED 등) 노출 (특정 대형 브랜드 로고 없음)",
-          "source": "https://unsplash.com/photos/grocery-store-aisle-with-stocked-shelves-ivfp_yxZuYQ"
-        }
+        { "file": "inflation_prices/grocery_aisle_01.jpg", "desc": "슈퍼마켓 진열대 통로, 가격표(PRICES DROPPED 등) 노출 (특정 대형 브랜드 로고 없음)", "source": "https://unsplash.com/photos/grocery-store-aisle-with-stocked-shelves-ivfp_yxZuYQ" },
+        { "file": "inflation_prices/02.jpg", "desc": "구겨진 영수증 클로즈업 (바코드/가격 표시, 얼굴·로고 없음)", "source": "https://unsplash.com/photos/official-receipt-on-white-surface-iJMitgqRaZ8" },
+        { "file": "inflation_prices/04.jpg", "desc": "종이 장바구니 2개에 담긴 사과·바나나·빵 (식료품 장보기)", "source": "https://unsplash.com/photos/apples-and-bananas-in-brown-cardboard-box-8RaUEd8zD-U" },
+        { "file": "inflation_prices/05.jpg", "desc": "야외 시장 채소 진열대 (당근/가지/피망/감자, 붉은 바구니)", "source": "https://unsplash.com/photos/fresh-vegetables-displayed-at-an-outdoor-market-Sya_pQnqx8Y" },
+        { "file": "inflation_prices/06.jpg", "desc": "베이지색 크래프트 에코백 (제품 목업 스타일)", "source": "https://unsplash.com/photos/beige-eco-bag-1Pgq9ZpIatI" },
+        { "file": "inflation_prices/07.jpg", "desc": "시장 채소 진열대 (파프리카/오이/버섯, 가격 스티커만 보임)", "source": "https://unsplash.com/photos/a-variety-of-vegetables-are-on-display-at-a-market-6hua7Xd9nXU" },
+        { "file": "inflation_prices/08.jpg", "desc": "매장 안 빈 쇼핑카트 줄지어 정렬된 모습", "source": "https://unsplash.com/photos/a-row-of-empty-shopping-carts-in-a-store-yZLtvPLNlw4" }
       ]
     },
     "corporate_business": {
       "설명": "산업/기업 이슈 (기업 실적, 산업 동향 등 범용 오피스/빌딩 이미지)",
       "keywords": ["기업", "산업", "실적", "오피스", "corporate", "business", "office", "industry"],
       "photos": [
-        {
-          "file": "corporate_business/office_glass_01.jpg",
-          "desc": "유리 파사드 오피스 빌딩 클로즈업 (특정 기업 로고 없음)",
-          "source": "https://unsplash.com/photos/glass-facade-of-a-modern-office-building-V5vF94h52r0"
-        }
+        { "file": "corporate_business/office_glass_01.jpg", "desc": "유리 파사드 오피스 빌딩 클로즈업 (특정 기업 로고 없음)", "source": "https://unsplash.com/photos/glass-facade-of-a-modern-office-building-V5vF94h52r0" },
+        { "file": "corporate_business/02.jpg", "desc": "노을빛 유리·블루 패널 오피스 빌딩 외관", "source": "https://unsplash.com/photos/modern-office-building-with-blue-panels-1deQbU6DhBg" },
+        { "file": "corporate_business/03.jpg", "desc": "회색 콘크리트 오피스 빌딩, 맑은 하늘 배경", "source": "https://unsplash.com/photos/gray-concrete-building-under-blue-sky-during-daytime-amBvaOYIRLY" },
+        { "file": "corporate_business/04.jpg", "desc": "저녁 하늘 아래 뾰족한 유리 오피스 빌딩 (로고 없음)", "source": "https://unsplash.com/photos/modern-skyscraper-with-glass-windows-against-sky-G5VXBoEB1AY" },
+        { "file": "corporate_business/05.jpg", "desc": "올려다본 초고층 오피스 빌딩 저각도 샷", "source": "https://unsplash.com/photos/looking-up-at-modern-skyscrapers-against-a-clear-sky-DjclooRnMrY" },
+        { "file": "corporate_business/06.jpg", "desc": "빈 스타트업 오피스 회의실 (화이트보드, 책상, 사람 없음)", "source": "https://unsplash.com/photos/empty-meeting-room-6MtJ-y1hzTs" },
+        { "file": "corporate_business/07.jpg", "desc": "회의 준비된 대형 컨퍼런스룸 (긴 테이블, 생수병)", "source": "https://unsplash.com/photos/an-empty-conference-room-is-ready-for-a-meeting-YgQxk8nWVOc" },
+        { "file": "corporate_business/08.jpg", "desc": "빈 컨퍼런스룸, 책상·의자만 배치됨", "source": "https://unsplash.com/photos/an-empty-conference-room-with-desks-and-chairs-bV5dFLEYecM" }
+      ]
+    },
+    "household_finance": {
+      "설명": "가계부채/대출/생활비 계산 (가계 재정, 이자 계산, 지출 관리 등)",
+      "keywords": ["가계부채", "대출", "이자", "생활비", "가계", "household debt", "loan", "budget", "calculator"],
+      "photos": [
+        { "file": "household_finance/calculator.jpg", "desc": "계산기 (가격/비용/이자 계산 은유)" },
+        { "file": "household_finance/02.jpg", "desc": "펼쳐진 노트와 펜, 나무 책상 위 필기구", "source": "https://unsplash.com/photos/open-notebook-with-pen-and-pencils-on-desk-n9AaeihA9HI" },
+        { "file": "household_finance/03.jpg", "desc": "노트·펜과 필통, 어두운 배경 (가계부 작성 이미지)", "source": "https://unsplash.com/photos/a-notebook-with-a-pen-and-pencils-next-to-it-CGaQ5V1ynX0" },
+        { "file": "household_finance/04.jpg", "desc": "'JUSTICE' 문구가 새겨진 금화 (상징적 도안, 실존 인물 아님)", "source": "https://unsplash.com/photos/a-stack-of-coins-sitting-on-top-of-a-table-6y-sN_19Ajk" },
+        { "file": "household_finance/05.jpg", "desc": "은화·은괴 더미 클로즈업 (사자 문장, 특정 국가 상징 아님)", "source": "https://unsplash.com/photos/a-pile-of-silver-coins-sitting-on-top-of-a-table-hUqaxjL1Ews" },
+        { "file": "household_finance/06.jpg", "desc": "계산기와 세금 신고서(1040) 서류, 펜 (가계 재정/세금 계산 이미지)", "source": "https://unsplash.com/photos/calculator-and-tax-forms-on-a-dark-surface-X2soeHdvkLY" },
+        { "file": "household_finance/07.jpg", "desc": "동전 앞에 놓인 분홍 돼지 저금통", "source": "https://unsplash.com/photos/5OUMf1Mr5pU" },
+        { "file": "household_finance/08.jpg", "desc": "노란 배경 위 'PLAN' 노트와 펜 (예산 계획 은유)", "source": "https://unsplash.com/photos/x_OKGbxB3fA" }
       ]
     },
     "trade_global": {
       "설명": "산업/수출입/글로벌 공급망",
       "keywords": ["수출", "수입", "무역", "공급망", "물류", "trade", "shipping", "supply chain", "port"],
       "photos": [
-        {
-          "file": "trade_global/shipping_port_01.jpg",
-          "desc": "컨테이너 항만 항공뷰",
-          "source": "https://unsplash.com/photos/aerial-view-of-a-busy-shipping-port-with-many-containers-JJCrTi0lvTs"
-        }
+        { "file": "trade_global/shipping_port_01.jpg", "desc": "컨테이너 항만 항공뷰", "source": "https://unsplash.com/photos/aerial-view-of-a-busy-shipping-port-with-many-containers-JJCrTi0lvTs" },
+        { "file": "trade_global/02.jpg", "desc": "컨테이너 항만, 트럭과 갠트리 크레인, 보라/분홍빛 노을 하늘", "source": "https://unsplash.com/photos/shipping-containers-stacked-at-a-busy-port-at-sunset-fT4SwA83jH4" },
+        { "file": "trade_global/03.jpg", "desc": "항만 크레인 실루엣, 일출/일몰", "source": "https://unsplash.com/photos/silhouette-of-crane-during-sunset-XL_MT3iS_s8" },
+        { "file": "trade_global/04.jpg", "desc": "강가 항만의 대형 갠트리 크레인 (붉은색)", "source": "https://unsplash.com/photos/cranes-stand-over-water-at-a-port-M06MaXjBFIg" },
+        { "file": "trade_global/05.jpg", "desc": "원양 화물선 갑판, 무지개와 바다", "source": "https://unsplash.com/photos/a-large-cargo-ship-in-the-middle-of-the-ocean-fthjdJetIMQ" },
+        { "file": "trade_global/06.jpg", "desc": "화물기(카고) 공항 탑재 작업 장면", "source": "https://unsplash.com/photos/cargo-plane-being-loaded-at-an-airport-tarmac-85gDb_IHdAQ" },
+        { "file": "trade_global/07.jpg", "desc": "대형 물류창고 내부 통로 (사람 없음)", "source": "https://unsplash.com/photos/GK8x_XCcDZg" },
+        { "file": "trade_global/08.jpg", "desc": "고속도로를 달리는 화물트럭 2대", "source": "https://unsplash.com/photos/neCb34TcLEg" },
+        { "file": "trade_global/09.jpg", "desc": "다채색 컨테이너 적재 더미", "source": "https://unsplash.com/photos/bukjsECgmeU" }
+      ]
+    },
+    "energy_commodities": {
+      "설명": "에너지/원자재 (유가, 전력, 재생에너지, 원자재 가격 등)",
+      "keywords": ["에너지", "원자재", "유가", "전력", "재생에너지", "energy", "commodity", "oil price", "power plant"],
+      "photos": [
+        { "file": "energy_commodities/01.jpg", "desc": "사막의 대규모 태양광 패널 단지 (항공뷰)", "source": "https://unsplash.com/photos/a-large-field-of-solar-panels-in-the-desert-E4XEBPEkgUs" },
+        { "file": "energy_commodities/02.jpg", "desc": "노을 지는 들판의 풍력 발전 터빈 3기", "source": "https://unsplash.com/photos/a-group-of-wind-turbines-in-a-field-bKfBW_Yp2Aw" },
+        { "file": "energy_commodities/03.jpg", "desc": "구름 낀 하늘의 고압 송전탑", "source": "https://unsplash.com/photos/a-tall-electrical-pylon-against-a-cloudy-sky-tXVfluMh7_4" },
+        { "file": "energy_commodities/04.jpg", "desc": "화력발전소 냉각탑에서 나오는 수증기, 풍력터빈 배경", "source": "https://unsplash.com/photos/industrial-power-plant-with-cooling-tower-emitting-steam-qDyL3-tk_ts" },
+        { "file": "energy_commodities/05.jpg", "desc": "강가의 발전소 굴뚝 4기, 노을빛", "source": "https://unsplash.com/photos/power-plant-towers-over-a-river-at-sunset-HUVtc1WGv2I" },
+        { "file": "energy_commodities/06.jpg", "desc": "초원 위 풍력 발전 터빈 단지 (노을)", "source": "https://unsplash.com/photos/eIBTh5DXW9w" },
+        { "file": "energy_commodities/07.jpg", "desc": "푸른 하늘 아래 송전탑과 송전선", "source": "https://unsplash.com/photos/Dh5pUa2PwrY" },
+        { "file": "energy_commodities/08.jpg", "desc": "항공뷰 태양광 패널 발전소 (녹지 사이 배열)", "source": "https://unsplash.com/photos/HGBCAbRBIME" },
+        { "file": "energy_commodities/09.jpg", "desc": "노을을 배경으로 한 유정 펌프잭 실루엣", "source": "https://unsplash.com/photos/GrmwVnVSSdU" }
+      ]
+    },
+    "manufacturing_industry": {
+      "설명": "제조업/산업 생산 (공장, 생산설비, 산업 인프라 등)",
+      "keywords": ["제조업", "생산", "공장", "산업생산", "manufacturing", "factory", "production", "industrial"],
+      "photos": [
+        { "file": "manufacturing_industry/01.jpg", "desc": "대형 산업 공장 파이프/설비 클로즈업 (녹슨 배관)", "source": "https://unsplash.com/photos/industrial-pipes-and-machinery-at-a-factory-XmmL7iNeFWc" },
+        { "file": "manufacturing_industry/02.jpg", "desc": "유리 제조 공장 내부, 가열로에서 나오는 붉은 빛", "source": "https://unsplash.com/photos/industrial-machinery-and-equipment-inside-a-factory-hZ2ULF80dCY" },
+        { "file": "manufacturing_industry/03.jpg", "desc": "공장 내부 대형 배관/설비, 어두운 조명", "source": "https://unsplash.com/photos/a-large-industrial-building-with-pipes-and-piping-SHTkq0lK96g" },
+        { "file": "manufacturing_industry/04.jpg", "desc": "공장 굴뚝에서 흰 연기 나오는 모습, 흐린 하늘", "source": "https://unsplash.com/photos/smoke-comes-out-from-industrial-factory-chimney-KKFKrOu3BVc" },
+        { "file": "manufacturing_industry/05.jpg", "desc": "노을 배경 공장 굴뚝 여러 개 실루엣", "source": "https://unsplash.com/photos/a-factory-with-smoke-stacks-in-the-background-WdEYLHgYmq4" },
+        { "file": "manufacturing_industry/06.jpg", "desc": "파란색 산업용 로봇팔이 부품을 운반하는 장면", "source": "https://unsplash.com/photos/sz1CHL7Pky0" },
+        { "file": "manufacturing_industry/07.jpg", "desc": "금속판을 레이저로 절단하며 불꽃이 튀는 장면", "source": "https://unsplash.com/photos/thdb7o0nLyc" },
+        { "file": "manufacturing_industry/08.jpg", "desc": "컨베이어벨트 위로 이동하는 원형 제품(식품 생산라인)", "source": "https://unsplash.com/photos/_RviMVR-3x8" },
+        { "file": "manufacturing_industry/09.jpg", "desc": "로봇팔이 자동차 차체를 조립하는 장면 (브랜드 로고 없음)", "source": "https://unsplash.com/photos/car-assembly-line-with-robotic-arms-and-car-body-RWwaf60fw0w" }
       ]
     },
     "semiconductor_tech": {
@@ -111,14 +184,11 @@
         { "file": "semiconductor_tech/wafer.jpg", "desc": "반도체 웨이퍼 클로즈업" },
         { "file": "semiconductor_tech/ram.jpg", "desc": "RAM 메모리 모듈 클로즈업" },
         { "file": "semiconductor_tech/servers.jpg", "desc": "데이터센터 서버랙" },
-        { "file": "semiconductor_tech/phone_laptop.jpg", "desc": "스마트폰과 노트북 (메모리 탑재 기기)" }
-      ]
-    },
-    "household_finance": {
-      "설명": "가계부채/대출/생활비 계산 (가계 재정, 이자 계산, 지출 관리 등)",
-      "keywords": ["가계부채", "대출", "이자", "생활비", "가계", "household debt", "loan", "budget", "calculator"],
-      "photos": [
-        { "file": "household_finance/calculator.jpg", "desc": "계산기 (가격/비용/이자 계산 은유)" }
+        { "file": "semiconductor_tech/phone_laptop.jpg", "desc": "스마트폰과 노트북 (메모리 탑재 기기)" },
+        { "file": "semiconductor_tech/05.jpg", "desc": "PCB 회로기판 위 반도체 칩 클로즈업 (초록 기판)", "source": "https://unsplash.com/photos/a-close-up-of-a-computer-chip-on-a-printed-circuit-board-tTurhPw9bwQ" },
+        { "file": "semiconductor_tech/06.jpg", "desc": "회로기판 매크로 클로즈업 (칩·저항·콘덴서)", "source": "https://unsplash.com/photos/FO7JIlwjOtU" },
+        { "file": "semiconductor_tech/07.jpg", "desc": "현대적인 데이터센터 서버 캐비닛 행렬", "source": "https://unsplash.com/photos/fImCPTZ026U" },
+        { "file": "semiconductor_tech/08.jpg", "desc": "집게로 들어올린 CPU 프로세서 칩 클로즈업", "source": "https://unsplash.com/photos/S4jSvcHYcOs" }
       ]
     }
   }
