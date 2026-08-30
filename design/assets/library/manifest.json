@@ -111,8 +111,14 @@
         { "file": "semiconductor_tech/wafer.jpg", "desc": "반도체 웨이퍼 클로즈업" },
         { "file": "semiconductor_tech/ram.jpg", "desc": "RAM 메모리 모듈 클로즈업" },
         { "file": "semiconductor_tech/servers.jpg", "desc": "데이터센터 서버랙" },
-        { "file": "semiconductor_tech/phone_laptop.jpg", "desc": "스마트폰과 노트북 (메모리 탑재 기기)" },
-        { "file": "semiconductor_tech/calculator.jpg", "desc": "계산기 (가격/비용 계산 은유)" }
+        { "file": "semiconductor_tech/phone_laptop.jpg", "desc": "스마트폰과 노트북 (메모리 탑재 기기)" }
+      ]
+    },
+    "household_finance": {
+      "설명": "가계부채/대출/생활비 계산 (가계 재정, 이자 계산, 지출 관리 등)",
+      "keywords": ["가계부채", "대출", "이자", "생활비", "가계", "household debt", "loan", "budget", "calculator"],
+      "photos": [
+        { "file": "household_finance/calculator.jpg", "desc": "계산기 (가격/비용/이자 계산 은유)" }
       ]
     }
   }
