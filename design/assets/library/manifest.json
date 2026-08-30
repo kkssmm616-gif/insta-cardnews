@@ -1,0 +1,119 @@
+{
+  "_설명": "일일 경제 카드뉴스 자동화용 실사 사진 라이브러리 매니페스트. 매일 새로 소싱하지 않고 여기서 주제에 맞는 사진을 먼저 찾아 재사용한다. 부족하면 4단계 소싱 규칙(무료 상업적 이용/얼굴 클로즈업·특정 화폐 초상·브랜드 로고 배제/육안 확인)에 따라 새로 받아 해당 category 폴더에 추가하고 이 파일에도 항목을 등록한다.",
+  "소싱_규칙_요약": [
+    "Unsplash 무료 라이선스만 사용 (images.unsplash.com, plus.unsplash.com 프리미엄 금지)",
+    "다운로드 시 리사이즈 파라미터 사용: ?fm=jpg&q=55&w=900&auto=format&fit=crop",
+    "사용 전 Read 도구로 육안 확인: 얼굴 클로즈업/특정국가 화폐·정치인·종교지도자 초상/대형 브랜드 로고 배제",
+    ".dc.html에는 base64 데이터 URI로 인라인 임베드 (외부 핫링크 불가)"
+  ],
+  "categories": {
+    "interest_rate": {
+      "설명": "금리 (한국은행/연준 기준금리, 대출금리 등)",
+      "keywords": ["금리", "기준금리", "연준", "한국은행", "대출", "interest rate", "central bank", "fed"],
+      "photos": [
+        {
+          "file": "interest_rate/fed_building_01.jpg",
+          "desc": "시카고 연방준비은행 건물 외관 (컬럼, 성조기)",
+          "source": "https://unsplash.com/photos/a-large-building-with-columns-and-a-flag-on-the-corner-Skfy8ljB7X4"
+        },
+        {
+          "file": "interest_rate/coins_stack_01.jpg",
+          "desc": "높이가 점점 커지는 동전 더미 5줄 (금리/자산 상승 은유)",
+          "source": "https://unsplash.com/photos/stacks-of-coins-increasing-in-height-from-left-to-right-894I850Hyl0"
+        }
+      ]
+    },
+    "exchange_rate": {
+      "설명": "환율 (원달러, 외환시장 등)",
+      "keywords": ["환율", "원달러", "외환", "달러", "exchange rate", "forex", "currency"],
+      "photos": [
+        {
+          "file": "exchange_rate/led_board_01.jpg",
+          "desc": "런던 환전소 'BEST RATES' LED 전광판",
+          "source": "https://unsplash.com/photos/7JoXNRbx6Qg"
+        },
+        {
+          "file": "exchange_rate/phone_forex_01.jpg",
+          "desc": "손가락으로 스마트폰 환율/증시 시세 화면을 가리키는 모습 (얼굴 없음, 손만 노출)",
+          "source": "https://unsplash.com/photos/OmPqCwX422Y"
+        }
+      ]
+    },
+    "stock_market": {
+      "설명": "증시 (코스피, 나스닥, 주식/투자 심리 등)",
+      "keywords": ["증시", "주식", "코스피", "나스닥", "투자", "stock market", "trading", "chart"],
+      "photos": [
+        {
+          "file": "stock_market/laptop_chart_01.jpg",
+          "desc": "노트북 화면에 표시된 캔들스틱 트레이딩 차트 (사람 없음)",
+          "source": "https://unsplash.com/photos/laptop-displays-a-stock-market-trading-chart-jW7C-KidYi0"
+        },
+        {
+          "file": "stock_market/trading_touchscreen_01.jpg",
+          "desc": "태블릿 캔들스틱 차트를 손으로 가리키는 모습, 배경에 멀티 모니터 시세 화면 (얼굴 없음)",
+          "source": "https://unsplash.com/photos/trader-analyzing-stock-market-charts-on-multiple-screens-j_hho1mE47s"
+        }
+      ]
+    },
+    "real_estate": {
+      "설명": "부동산 (아파트, 주택시장, 패닉바잉 등)",
+      "keywords": ["부동산", "아파트", "주택", "매매", "전세", "real estate", "apartment", "housing"],
+      "photos": [
+        {
+          "file": "real_estate/apartment_exterior_01.jpg",
+          "desc": "노을빛 아파트 발코니 외관, 나무와 하늘 배경",
+          "source": "https://unsplash.com/photos/apartment-building-exterior-with-trees-and-sky-gEySCQFjRdk"
+        },
+        {
+          "file": "real_estate/apartment_exterior_02.jpg",
+          "desc": "빼곡한 초고층 아파트 창문 패턴 클로즈업 (홍콩 스타일 고밀도 주거)",
+          "source": "https://unsplash.com/photos/modern-apartment-buildings-with-many-windows-XdSij4UOj0E"
+        }
+      ]
+    },
+    "inflation_prices": {
+      "설명": "물가/인플레이션 (장바구니 물가, 생활비 등)",
+      "keywords": ["물가", "인플레이션", "장바구니", "생활비", "식료품", "inflation", "grocery", "prices"],
+      "photos": [
+        {
+          "file": "inflation_prices/grocery_aisle_01.jpg",
+          "desc": "슈퍼마켓 진열대 통로, 가격표(PRICES DROPPED 등) 노출 (특정 대형 브랜드 로고 없음)",
+          "source": "https://unsplash.com/photos/grocery-store-aisle-with-stocked-shelves-ivfp_yxZuYQ"
+        }
+      ]
+    },
+    "corporate_business": {
+      "설명": "산업/기업 이슈 (기업 실적, 산업 동향 등 범용 오피스/빌딩 이미지)",
+      "keywords": ["기업", "산업", "실적", "오피스", "corporate", "business", "office", "industry"],
+      "photos": [
+        {
+          "file": "corporate_business/office_glass_01.jpg",
+          "desc": "유리 파사드 오피스 빌딩 클로즈업 (특정 기업 로고 없음)",
+          "source": "https://unsplash.com/photos/glass-facade-of-a-modern-office-building-V5vF94h52r0"
+        }
+      ]
+    },
+    "trade_global": {
+      "설명": "산업/수출입/글로벌 공급망",
+      "keywords": ["수출", "수입", "무역", "공급망", "물류", "trade", "shipping", "supply chain", "port"],
+      "photos": [
+        {
+          "file": "trade_global/shipping_port_01.jpg",
+          "desc": "컨테이너 항만 항공뷰",
+          "source": "https://unsplash.com/photos/aerial-view-of-a-busy-shipping-port-with-many-containers-JJCrTi0lvTs"
+        }
+      ]
+    },
+    "semiconductor_tech": {
+      "설명": "반도체/IT (기존 칩플레이션 카드뉴스에서 사용, design/assets/ 원본과 동일)",
+      "keywords": ["반도체", "메모리", "칩", "웨이퍼", "서버", "semiconductor", "memory chip", "wafer", "server"],
+      "photos": [
+        { "file": "semiconductor_tech/wafer.jpg", "desc": "반도체 웨이퍼 클로즈업" },
+        { "file": "semiconductor_tech/ram.jpg", "desc": "RAM 메모리 모듈 클로즈업" },
+        { "file": "semiconductor_tech/servers.jpg", "desc": "데이터센터 서버랙" },
+        { "file": "semiconductor_tech/phone_laptop.jpg", "desc": "스마트폰과 노트북 (메모리 탑재 기기)" },
+        { "file": "semiconductor_tech/calculator.jpg", "desc": "계산기 (가격/비용 계산 은유)" }
+      ]
+    }
+  }
+}
