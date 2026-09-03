@@ -1,0 +1,121 @@
+name: Instagram 카드뉴스 자동 게시
+
+on:
+  workflow_run:
+    workflows: ["Auto-merge Claude routine branches"]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "발행할 날짜 (YYYY-MM-DD, 비우면 오늘 KST)"
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  render:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    outputs:
+      date: ${{ steps.setdate.outputs.date }}
+      ready: ${{ steps.check.outputs.ready }}
+      caption: ${{ steps.caption.outputs.caption }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: master
+
+      - id: setdate
+        run: |
+          DATE="${{ github.event.inputs.date }}"
+          if [ -z "$DATE" ]; then
+            DATE=$(TZ=Asia/Seoul date +%F)
+          fi
+          echo "date=$DATE" >> "$GITHUB_OUTPUT"
+
+      - id: check
+        run: |
+          if [ -f "docs/${{ steps.setdate.outputs.date }}-cardnews.html" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "docs/${{ steps.setdate.outputs.date }}-cardnews.html 없음, 이 실행은 건너뜀"
+          fi
+
+      - if: steps.check.outputs.ready == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - if: steps.check.outputs.ready == 'true'
+        run: |
+          npm install playwright
+          npx playwright install --with-deps chromium
+
+      - if: steps.check.outputs.ready == 'true'
+        run: node scripts/render-for-instagram.js "${{ steps.setdate.outputs.date }}"
+
+      - if: steps.check.outputs.ready == 'true'
+        id: caption
+        run: |
+          TITLE=$(grep -oPm1 "(?<=<title>)[^<]+" "docs/${{ steps.setdate.outputs.date }}-cardnews.html")
+          {
+            echo "caption<<CAPTION_EOF"
+            echo "$TITLE"
+            echo ""
+            echo "오늘의 경제 카드뉴스"
+            echo "#경제뉴스 #오늘의경제 #카드뉴스 #경제공부 #뉴스브리핑"
+            echo "CAPTION_EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - if: steps.check.outputs.ready == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "docs/exports/${{ steps.setdate.outputs.date }}"
+          git commit -m "Instagram 게시용 이미지 렌더링: ${{ steps.setdate.outputs.date }}" || echo "변경 없음"
+          git push origin master
+
+  wait-for-pages:
+    needs: render
+    if: needs.render.outputs.ready == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: GitHub Pages 반영 대기 및 확인
+        run: |
+          DATE="${{ needs.render.outputs.date }}"
+          for i in $(seq 1 15); do
+            OK=true
+            for f in 01-main 02-cut2 03-cut3 04-cut4 05-cut5 06-cut6; do
+              URL="https://kkssmm616-gif.github.io/insta-cardnews/exports/$DATE/$f.jpg"
+              CODE=$(curl -s -o /dev/null -w "%{http_code}" "$URL")
+              if [ "$CODE" != "200" ]; then OK=false; fi
+            done
+            if [ "$OK" = "true" ]; then
+              echo "모든 이미지 접근 가능"
+              exit 0
+            fi
+            echo "GitHub Pages 반영 대기 중... ($i/15)"
+            sleep 20
+          done
+          echo "타임아웃: 이미지가 아직 공개되지 않음"
+          exit 1
+
+  approve-and-publish:
+    needs: [render, wait-for-pages]
+    if: needs.render.outputs.ready == 'true'
+    runs-on: ubuntu-latest
+    environment: instagram-publish
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Instagram에 게시
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_USER_ID: "17841429536058936"
+          DATE: ${{ needs.render.outputs.date }}
+          CAPTION: ${{ needs.render.outputs.caption }}
+        run: node scripts/publish-to-instagram.js
