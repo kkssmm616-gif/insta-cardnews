@@ -59,13 +59,18 @@ jobs:
       - if: steps.check.outputs.ready == 'true'
         id: caption
         run: |
-          TITLE=$(grep -oPm1 "(?<=<title>)[^<]+" "docs/${{ steps.setdate.outputs.date }}-cardnews.html")
+          CAPTION_FILE="docs/${{ steps.setdate.outputs.date }}-caption.txt"
           {
             echo "caption<<CAPTION_EOF"
-            echo "$TITLE"
-            echo ""
-            echo "오늘의 경제 카드뉴스"
-            echo "#경제뉴스 #오늘의경제 #카드뉴스 #경제공부 #뉴스브리핑"
+            if [ -f "$CAPTION_FILE" ]; then
+              cat "$CAPTION_FILE"
+            else
+              TITLE=$(grep -oPm1 "(?<=<title>)[^<]+" "docs/${{ steps.setdate.outputs.date }}-cardnews.html")
+              echo "$TITLE"
+              echo ""
+              echo "오늘의 경제 카드뉴스"
+              echo "#경제뉴스 #오늘의경제 #카드뉴스 #경제공부 #뉴스브리핑"
+            fi
             echo "CAPTION_EOF"
           } >> "$GITHUB_OUTPUT"
 
