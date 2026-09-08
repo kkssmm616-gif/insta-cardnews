@@ -1,3 +1,4 @@
 local-export/node_modules/
 local-export/package-lock.json
 local-export/logs/
+design/__pycache__/

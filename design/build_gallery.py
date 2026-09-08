@@ -1,24 +1,30 @@
 """
-design/{Main,Cut2..Cut6}.dc.html 6장을 읽어 GitHub Pages용 정적 갤러리 HTML을 생성한다.
-사용법: python build_gallery.py {YYYY-MM-DD} "{페이지 타이틀}"
-출력: ../docs/{YYYY-MM-DD}-cardnews.html
+design/set{N}/{Main,Cut2..Cut6}.dc.html 6장을 읽어 GitHub Pages용 정적 갤러리 HTML을 생성한다.
+사용법: python build_gallery.py {YYYY-MM-DD} {SET_INDEX} "{페이지 타이틀}"
+출력: ../docs/{YYYY-MM-DD}-cardnews-{SET_INDEX}.html
 
 각 아트보드를 base64로 인코딩해 <iframe srcdoc>으로 격리 렌더링한다.
 (캔버스 에디터용 seed-canvas 결과물은 Claude 프레임 없이 단독으로 열면 빈 화면만 뜨므로
  GitHub Pages 같은 순수 정적 호스팅에는 이 스크립트의 결과물을 써야 한다.)
 """
-import base64, pathlib, sys, datetime
+import base64, pathlib, sys
 
 base = pathlib.Path(__file__).parent
 files = ["Main.dc.html", "Cut2.dc.html", "Cut3.dc.html", "Cut4.dc.html", "Cut5.dc.html", "Cut6.dc.html"]
 
-date = sys.argv[1] if len(sys.argv) > 1 else datetime.date.today().isoformat()
-title = sys.argv[2] if len(sys.argv) > 2 else "카드뉴스"
-out_path = base.parent / "docs" / f"{date}-cardnews.html"
+if len(sys.argv) < 3:
+    print('사용법: python build_gallery.py {YYYY-MM-DD} {SET_INDEX} "{페이지 타이틀}"')
+    sys.exit(1)
+
+date = sys.argv[1]
+set_index = sys.argv[2]
+title = sys.argv[3] if len(sys.argv) > 3 else "카드뉴스"
+src_dir = base / f"set{set_index}"
+out_path = base.parent / "docs" / f"{date}-cardnews-{set_index}.html"
 
 cards_js = []
 for f in files:
-    b = (base / f).read_bytes()
+    b = (src_dir / f).read_bytes()
     b64 = base64.b64encode(b).decode("ascii")
     cards_js.append(f'"{f}":"{b64}"')
 

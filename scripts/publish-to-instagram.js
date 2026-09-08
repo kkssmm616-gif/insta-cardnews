@@ -1,21 +1,24 @@
 /**
- * GitHub Actions에서 실행: docs/exports/{DATE}/ 에 올라간 6장의 JPEG를
+ * GitHub Actions에서 실행: docs/exports/{DATE}/{SET_INDEX}/ 에 올라간 6장의 JPEG를
  * (GitHub Pages 공개 URL 경유) 인스타그램 캐러셀 게시물로 발행한다.
+ * 하루 최대 3세트(SET_INDEX 1~3)를 만들며, 이 스크립트는 세트 1개를 발행한다
+ * (3세트 모두 게시하려면 워크플로에서 세트마다 이 스크립트를 반복 호출한다).
  *
  * 필요한 환경 변수:
  *   IG_ACCESS_TOKEN - Instagram Graph API 액세스 토큰
  *   IG_USER_ID      - Instagram 비즈니스/크리에이터 계정 ID
  *   DATE            - YYYY-MM-DD
+ *   SET_INDEX       - 1, 2, 3 중 하나 (오늘의 몇 번째 세트인지)
  *   CAPTION         - 게시물 본문
  */
 const PAGES_BASE = "https://kkssmm616-gif.github.io/insta-cardnews";
 const API_BASE = "https://graph.instagram.com/v21.0";
 const OUT_NAMES = ["01-main.jpg", "02-cut2.jpg", "03-cut3.jpg", "04-cut4.jpg", "05-cut5.jpg", "06-cut6.jpg"];
 
-const { IG_ACCESS_TOKEN, IG_USER_ID, DATE, CAPTION } = process.env;
+const { IG_ACCESS_TOKEN, IG_USER_ID, DATE, SET_INDEX, CAPTION } = process.env;
 
 function assertEnv() {
-  for (const [k, v] of Object.entries({ IG_ACCESS_TOKEN, IG_USER_ID, DATE })) {
+  for (const [k, v] of Object.entries({ IG_ACCESS_TOKEN, IG_USER_ID, DATE, SET_INDEX })) {
     if (!v) {
       console.error(`환경 변수 누락: ${k}`);
       process.exit(1);
@@ -72,11 +75,11 @@ async function publish(creationId) {
 
 async function main() {
   assertEnv();
-  console.log(`인스타그램 게시 시작: ${DATE}`);
+  console.log(`인스타그램 게시 시작: ${DATE} 세트 ${SET_INDEX}`);
 
   const childIds = [];
   for (const name of OUT_NAMES) {
-    const imageUrl = `${PAGES_BASE}/exports/${DATE}/${name}`;
+    const imageUrl = `${PAGES_BASE}/exports/${DATE}/${SET_INDEX}/${name}`;
     console.log(`- 컨테이너 생성: ${imageUrl}`);
     const id = await createCarouselItem(imageUrl);
     childIds.push(id);
@@ -95,7 +98,7 @@ async function main() {
 
   console.log("- 게시 중...");
   const result = await publish(carouselId);
-  console.log("완료:", result);
+  console.log(`세트 ${SET_INDEX} 완료:`, result);
 }
 
 main().catch((err) => {
