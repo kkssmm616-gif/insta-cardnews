@@ -83,8 +83,8 @@ jobs:
             done
             echo "file '$(readlink -f "$DIR/06-cut6.jpg")'" >> "$LIST"
             ffmpeg -y -f concat -safe 0 -i "$LIST" \
-              -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=48000 \
-              -vf "format=yuv420p" -r 30 -c:v libx264 -c:a aac -shortest -movflags +faststart \
+              -stream_loop -1 -i design/assets/bgm.mp3 \
+              -vf "format=yuv420p" -r 30 -c:v libx264 -c:a aac -b:a 128k -shortest -movflags +faststart \
               "$DIR/reel.mp4"
             rm "$LIST"
             echo "- 세트 $i 릴스 영상 생성됨: $DIR/reel.mp4"
