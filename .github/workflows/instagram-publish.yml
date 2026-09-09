@@ -60,9 +60,10 @@ jobs:
         run: |
           npm install playwright
           npx playwright install --with-deps chromium
+          sudo apt-get update && sudo apt-get install -y ffmpeg
 
       - if: steps.check.outputs.any_ready == 'true'
-        name: 세트별 렌더링 및 캡션 확보
+        name: 세트별 렌더링, 릴스용 영상 생성, 캡션 확보
         run: |
           DATE="${{ steps.setdate.outputs.date }}"
           READY1="${{ steps.check.outputs.ready1 }}"
@@ -72,6 +73,22 @@ jobs:
             READY_VAR="READY$i"
             if [ "${!READY_VAR}" != "true" ]; then continue; fi
             node scripts/render-for-instagram.js "$DATE" "$i"
+
+            DIR="docs/exports/${DATE}/${i}"
+            LIST="$DIR/concat.txt"
+            > "$LIST"
+            for f in 01-main.jpg 02-cut2.jpg 03-cut3.jpg 04-cut4.jpg 05-cut5.jpg 06-cut6.jpg; do
+              echo "file '$(readlink -f "$DIR/$f")'" >> "$LIST"
+              echo "duration 3" >> "$LIST"
+            done
+            echo "file '$(readlink -f "$DIR/06-cut6.jpg")'" >> "$LIST"
+            ffmpeg -y -f concat -safe 0 -i "$LIST" \
+              -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=48000 \
+              -vf "format=yuv420p" -r 30 -c:v libx264 -c:a aac -shortest -movflags +faststart \
+              "$DIR/reel.mp4"
+            rm "$LIST"
+            echo "- 세트 $i 릴스 영상 생성됨: $DIR/reel.mp4"
+
             CAPTION_FILE="docs/${DATE}-caption-${i}.txt"
             if [ ! -f "$CAPTION_FILE" ]; then
               TITLE=$(grep -oPm1 "(?<=<title>)[^<]+" "docs/${DATE}-cardnews-${i}.html")
@@ -119,6 +136,9 @@ jobs:
                 CODE=$(curl -s -o /dev/null -w "%{http_code}" "$URL")
                 if [ "$CODE" != "200" ]; then OK=false; fi
               done
+              REEL_URL="https://kkssmm616-gif.github.io/insta-cardnews/exports/$DATE/$i/reel.mp4"
+              REEL_CODE=$(curl -s -o /dev/null -w "%{http_code}" "$REEL_URL")
+              if [ "$REEL_CODE" != "200" ]; then OK=false; fi
               if [ "$OK" = "true" ]; then
                 echo "세트 $i 이미지 접근 가능"
                 break
@@ -142,7 +162,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Instagram에 세트별 순차 게시 (승인 1번으로 최대 3개 게시)
+      - name: Instagram에 세트별 순차 게시 (승인 1번으로 캐러셀+릴스 최대 6개 게시)
         env:
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
           IG_USER_ID: "17841429536058936"
@@ -154,9 +174,13 @@ jobs:
           for i in 1 2 3; do
             READY_VAR="READY$i"
             if [ "${!READY_VAR}" != "true" ]; then continue; fi
-            echo "=== 세트 $i 게시 시작 ==="
             export DATE="$DATE"
             export SET_INDEX="$i"
             export CAPTION="$(cat "docs/${DATE}-caption-${i}.txt")"
+
+            echo "=== 세트 $i 캐러셀 게시 시작 ==="
             node scripts/publish-to-instagram.js
+
+            echo "=== 세트 $i 릴스 게시 시작 ==="
+            node scripts/publish-reel-to-instagram.js
           done
