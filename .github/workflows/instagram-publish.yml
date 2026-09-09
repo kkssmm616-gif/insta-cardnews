@@ -79,7 +79,7 @@ jobs:
             > "$LIST"
             for f in 01-main.jpg 02-cut2.jpg 03-cut3.jpg 04-cut4.jpg 05-cut5.jpg 06-cut6.jpg; do
               echo "file '$(readlink -f "$DIR/$f")'" >> "$LIST"
-              echo "duration 3" >> "$LIST"
+              echo "duration 5" >> "$LIST"
             done
             echo "file '$(readlink -f "$DIR/06-cut6.jpg")'" >> "$LIST"
             ffmpeg -y -f concat -safe 0 -i "$LIST" \
