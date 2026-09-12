@@ -47,12 +47,15 @@ async function createCarouselItem(imageUrl) {
 }
 
 async function waitUntilFinished(containerId) {
-  for (let i = 0; i < 15; i++) {
+  // API 호출량을 아끼기 위해 너무 촘촘히 폴링하지 않는다(이미지는 보통 몇 초 안에 끝나지만,
+  // 첫 확인 전 약간 기다렸다가 뜸하게 재시도해 불필요한 초반 폴링을 줄인다).
+  await new Promise((r) => setTimeout(r, 3000));
+  for (let i = 0; i < 10; i++) {
     const q = new URLSearchParams({ fields: "status_code", access_token: IG_ACCESS_TOKEN });
     const json = await api(`/${containerId}?${q.toString()}`);
     if (json.status_code === "FINISHED") return;
     if (json.status_code === "ERROR") throw new Error(`컨테이너 처리 실패: ${containerId}`);
-    await new Promise((r) => setTimeout(r, 4000));
+    await new Promise((r) => setTimeout(r, 6000));
   }
   throw new Error(`컨테이너 처리 타임아웃: ${containerId}`);
 }

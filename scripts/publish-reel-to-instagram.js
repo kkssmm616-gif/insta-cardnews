@@ -47,13 +47,15 @@ async function createReelContainer(videoUrl) {
 }
 
 async function waitUntilFinished(containerId) {
-  // 영상 처리(트랜스코딩)는 이미지보다 오래 걸릴 수 있어 이미지 발행보다 길게 재시도한다.
-  for (let i = 0; i < 30; i++) {
+  // 영상 트랜스코딩은 보통 60~70초 걸린다. API 호출량(요청 한도)을 아끼기 위해
+  // 촘촘히 폴링하지 않고, 처음엔 오래 기다렸다가 뜸하게 확인한다(총 대기 한도는 비슷하게 유지).
+  await new Promise((r) => setTimeout(r, 45000)); // 첫 확인 전 45초 대기 (초반 폴링 낭비 방지)
+  for (let i = 0; i < 12; i++) {
     const q = new URLSearchParams({ fields: "status_code", access_token: IG_ACCESS_TOKEN });
     const json = await api(`/${containerId}?${q.toString()}`);
     if (json.status_code === "FINISHED") return;
     if (json.status_code === "ERROR") throw new Error(`컨테이너 처리 실패: ${containerId}`);
-    await new Promise((r) => setTimeout(r, 6000));
+    await new Promise((r) => setTimeout(r, 15000));
   }
   throw new Error(`컨테이너 처리 타임아웃: ${containerId}`);
 }
