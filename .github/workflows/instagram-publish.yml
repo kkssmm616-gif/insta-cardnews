@@ -159,10 +159,13 @@ jobs:
     environment: instagram-publish
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: master
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Instagram에 세트별 순차 게시 (승인 1번으로 캐러셀+릴스 최대 6개 게시)
+      - name: 첫 세트만 즉시 게시, 나머지는 8시간 간격으로 예약 (승인은 1번만 필요 — API 호출이 한번에 몰리지 않도록 분산)
+        id: publish
         env:
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
           IG_USER_ID: "17841429536058936"
@@ -171,16 +174,35 @@ jobs:
           READY1="${{ needs.render.outputs.ready1 }}"
           READY2="${{ needs.render.outputs.ready2 }}"
           READY3="${{ needs.render.outputs.ready3 }}"
+
+          READY_SETS=()
           for i in 1 2 3; do
             READY_VAR="READY$i"
-            if [ "${!READY_VAR}" != "true" ]; then continue; fi
-            export DATE="$DATE"
-            export SET_INDEX="$i"
-            export CAPTION="$(cat "docs/${DATE}-caption-${i}.txt")"
-
-            echo "=== 세트 $i 캐러셀 게시 시작 ==="
-            node scripts/publish-to-instagram.js
-
-            echo "=== 세트 $i 릴스 게시 시작 ==="
-            node scripts/publish-reel-to-instagram.js
+            [ "${!READY_VAR}" = "true" ] && READY_SETS+=("$i")
           done
+
+          FIRST="${READY_SETS[0]}"
+          echo "=== 세트 $FIRST 즉시 게시 ==="
+          export DATE="$DATE"
+          export SET_INDEX="$FIRST"
+          export CAPTION="$(cat "docs/${DATE}-caption-${FIRST}.txt")"
+          node scripts/publish-to-instagram.js
+          node scripts/publish-reel-to-instagram.js
+
+          REMAINING=("${READY_SETS[@]:1}")
+          if [ "${#REMAINING[@]}" -gt 0 ]; then
+            echo "=== 나머지 세트(${REMAINING[*]}) 8시간 간격 예약 ==="
+            node scripts/build-publish-queue.js "$DATE" "${REMAINING[@]}"
+            echo "queued=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "queued=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - if: steps.publish.outputs.queued == 'true'
+        run: |
+          DATE="${{ needs.render.outputs.date }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "docs/${DATE}-publish-queue.json"
+          git commit -m "게시 대기열 생성: ${DATE}"
+          git push origin master
