@@ -164,11 +164,20 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: 첫 세트만 즉시 게시, 나머지는 8시간 간격으로 예약 (승인은 1번만 필요 — API 호출이 한번에 몰리지 않도록 분산)
+      # 임시 축소 모드 (2026-09-12~): Meta가 이 계정/앱의 게시 요청을 스팸으로
+      # 오탐지해 "Application request limit reached"(code 4, subcode 2207051,
+      # is_transient:false)로 계속 차단 중. Meta 개발자 커뮤니티에도 동일 증상이
+      # 다수 보고돼있고("새 앱+새 계정+비슷한 콘텐츠를 짧은 간격으로 다량 게시"가
+      # 전형적인 오탐 패턴), 호출량 절감/시간 분산 둘 다 효과가 없었음.
+      # 플래그가 풀렸는지 확인될 때까지 하루 캐러셀 1개만(릴스 없이, 나머지
+      # 세트 예약도 없이) 게시하도록 축소. 정상 확인되면 REDUCED_MODE를
+      # false로 되돌리면 원래(세트별 캐러셀+릴스, 8시간 간격 예약) 동작으로 복귀.
+      - name: 세트 발행 (임시 축소 모드 — 하루 캐러셀 1개만)
         id: publish
         env:
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
           IG_USER_ID: "17841429536058936"
+          REDUCED_MODE: "true"
         run: |
           DATE="${{ needs.render.outputs.date }}"
           READY1="${{ needs.render.outputs.ready1 }}"
@@ -182,11 +191,18 @@ jobs:
           done
 
           FIRST="${READY_SETS[0]}"
-          echo "=== 세트 $FIRST 즉시 게시 ==="
+          echo "=== 세트 $FIRST 캐러셀만 게시 (축소 모드: 릴스/나머지 세트 생략) ==="
           export DATE="$DATE"
           export SET_INDEX="$FIRST"
           export CAPTION="$(cat "docs/${DATE}-caption-${FIRST}.txt")"
           node scripts/publish-to-instagram.js
+
+          if [ "$REDUCED_MODE" = "true" ]; then
+            echo "축소 모드라 릴스 및 나머지 세트는 생략함"
+            echo "queued=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
           node scripts/publish-reel-to-instagram.js
 
           REMAINING=("${READY_SETS[@]:1}")
