@@ -26,9 +26,17 @@ function assertEnv() {
   }
 }
 
+function logUsageHeaders(res) {
+  const appUsage = res.headers.get("x-app-usage");
+  const buUsage = res.headers.get("x-business-use-case-usage");
+  if (appUsage) console.log(`  [x-app-usage] ${appUsage}`);
+  if (buUsage) console.log(`  [x-business-use-case-usage] ${buUsage}`);
+}
+
 async function api(pathAndQuery, method = "GET") {
   const url = `${API_BASE}${pathAndQuery}`;
   const res = await fetch(url, { method });
+  logUsageHeaders(res);
   const json = await res.json();
   if (!res.ok) {
     throw new Error(`API 오류 (${res.status}): ${JSON.stringify(json)}`);
