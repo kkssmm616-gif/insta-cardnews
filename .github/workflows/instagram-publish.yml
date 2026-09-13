@@ -152,11 +152,15 @@ jobs:
             fi
           done
 
-  approve-and-publish:
+  publish:
     needs: [render, wait-for-pages]
     if: needs.render.outputs.any_ready == 'true'
     runs-on: ubuntu-latest
-    environment: instagram-publish
+    # 2026-09-13부로 승인 게이트(environment: instagram-publish) 제거 —
+    # Meta 스팸 오탐 이슈로 매일 차단되는 상황이라 승인 자체가 실질적 의미가
+    # 없어졌고, 사용자가 매번 확인하는 번거로움만 남아 승인 없이 바로
+    # 발행하도록 변경. 다시 승인 단계를 두고 싶으면 위에 `environment:
+    # instagram-publish`를 되살리면 됨.
     steps:
       - uses: actions/checkout@v4
         with:
