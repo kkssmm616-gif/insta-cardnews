@@ -73,6 +73,44 @@ async function publish(creationId) {
   return api(`/${IG_USER_ID}/media_publish?${q.toString()}`, "POST");
 }
 
+// publish-to-instagram.js와 동일한 이유(에러 응답과 실제 게시 여부가 다를 수 있음)로,
+// 실패로 보여도 바로 포기하지 않고 최근 게시물(릴스 포함)에 이 캡션이 이미
+// 올라와 있는지 확인한다.
+async function wasRecentlyPublished() {
+  const hookLine = (CAPTION || "").split("\n")[0].trim();
+  if (!hookLine) return false;
+
+  for (let i = 0; i < 3; i++) {
+    await new Promise((r) => setTimeout(r, 40000));
+    try {
+      const q = new URLSearchParams({
+        fields: "timestamp,caption,media_product_type",
+        limit: "5",
+        access_token: IG_ACCESS_TOKEN,
+      });
+      const res = await fetch(`${API_BASE}/${IG_USER_ID}/media?${q.toString()}`);
+      const json = await res.json();
+      if (res.ok && Array.isArray(json.data)) {
+        const now = Date.now();
+        // 캐러셀도 같은 캡션을 쓰므로, 릴스(REELS)인 것만 인정해야 캐러셀 성공을
+        // 릴스 성공으로 착각하지 않는다.
+        const found = json.data.some((m) => {
+          const ageMs = now - new Date(m.timestamp).getTime();
+          return (
+            ageMs < 15 * 60 * 1000 &&
+            m.media_product_type === "REELS" &&
+            (m.caption || "").includes(hookLine)
+          );
+        });
+        if (found) return true;
+      }
+    } catch {
+      // 확인 자체가 실패하면 다음 시도로 넘어간다
+    }
+  }
+  return false;
+}
+
 async function main() {
   assertEnv();
   const videoUrl = `${PAGES_BASE}/exports/${DATE}/${SET_INDEX}/reel.mp4`;
@@ -89,7 +127,12 @@ async function main() {
   console.log(`세트 ${SET_INDEX} 릴스 완료:`, result);
 }
 
-main().catch((err) => {
+main().catch(async (err) => {
+  console.error(`오류 발생, 실제로 게시됐는지 확인 중... (${err.message})`);
+  if (await wasRecentlyPublished()) {
+    console.log(`세트 ${SET_INDEX} 릴스: 에러 응답과 달리 실제로는 게시된 것으로 확인됨 (재시도 생략)`);
+    return;
+  }
   console.error("오류:", err);
   process.exit(1);
 });

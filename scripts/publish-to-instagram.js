@@ -84,6 +84,36 @@ async function publish(creationId) {
   return api(`/${IG_USER_ID}/media_publish?${q.toString()}`, "POST");
 }
 
+// Meta가 code 4/subcode 2207051("Application request limit reached", 스팸 오탐)
+// 에러를 응답하고도 실제로는 뒤에서 게시를 처리하는 경우가 여러 번 확인됐다
+// (2026-09-11, 9/12, 9/13, 9/15 — "실패" 로그와 달리 인스타그램엔 실제로 게시돼
+// 있었음, 9/12는 재시도로 중복 게시까지 발생). 그래서 에러가 나도 바로 포기/재시도
+// 하지 않고, 최근 게시물에 이번 캡션이 이미 올라와 있는지 확인한 뒤 판단한다.
+async function wasRecentlyPublished() {
+  const hookLine = (CAPTION || "").split("\n")[0].trim();
+  if (!hookLine) return false;
+
+  for (let i = 0; i < 3; i++) {
+    await new Promise((r) => setTimeout(r, 40000));
+    try {
+      const q = new URLSearchParams({ fields: "timestamp,caption", limit: "5", access_token: IG_ACCESS_TOKEN });
+      const res = await fetch(`${API_BASE}/${IG_USER_ID}/media?${q.toString()}`);
+      const json = await res.json();
+      if (res.ok && Array.isArray(json.data)) {
+        const now = Date.now();
+        const found = json.data.some((m) => {
+          const ageMs = now - new Date(m.timestamp).getTime();
+          return ageMs < 15 * 60 * 1000 && (m.caption || "").includes(hookLine);
+        });
+        if (found) return true;
+      }
+    } catch {
+      // 확인 자체가 실패하면 다음 시도로 넘어간다
+    }
+  }
+  return false;
+}
+
 async function main() {
   assertEnv();
   console.log(`인스타그램 게시 시작: ${DATE} 세트 ${SET_INDEX}`);
@@ -112,7 +142,12 @@ async function main() {
   console.log(`세트 ${SET_INDEX} 완료:`, result);
 }
 
-main().catch((err) => {
+main().catch(async (err) => {
+  console.error(`오류 발생, 실제로 게시됐는지 확인 중... (${err.message})`);
+  if (await wasRecentlyPublished()) {
+    console.log(`세트 ${SET_INDEX}: 에러 응답과 달리 실제로는 게시된 것으로 확인됨 (재시도 생략)`);
+    return;
+  }
   console.error("오류:", err);
   process.exit(1);
 });
