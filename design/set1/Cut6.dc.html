@@ -49,6 +49,24 @@
   .cta .icon{font-size:32px;}
   .cta .txt{font-size:28px;font-weight:800;color:#1A2B45;}
 
+  .mascot-wrap{display:flex;align-items:flex-end;justify-content:center;gap:16px;margin-top:36px;}
+  .mascot{width:92px;height:92px;flex-shrink:0;}
+  .mascot-bubble{
+    background:#fff;border:2px solid #1A2B45;border-radius:16px;
+    padding:10px 18px;font-size:22px;font-weight:800;color:#1A2B45;
+    position:relative;white-space:nowrap;
+  }
+  .mascot-bubble::before{
+    content:"";position:absolute;left:-10px;bottom:16px;
+    width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;
+    border-right:10px solid #1A2B45;
+  }
+  .mascot-bubble::after{
+    content:"";position:absolute;left:-7px;bottom:16px;
+    width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;
+    border-right:8px solid #fff;
+  }
+
   .sign-off{margin-top:auto;padding-bottom:56px;text-align:center;}
   .sign-off .line1{font-size:24px;font-weight:700;color:#9A9283;}
   .sign-off .line2{margin-top:6px;font-size:22px;font-weight:900;letter-spacing:2px;color:#1A2B45;}
@@ -76,6 +94,25 @@
       <div class="cta">
         <span class="icon">🔖</span>
         <span class="txt">저장해두고 이번 주 코스피 흐름 체크하기</span>
+      </div>
+
+      <div class="mascot-wrap">
+        <svg class="mascot" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="60" cy="68" rx="44" ry="46" fill="#1A2B45"/>
+          <path d="M22 40 L12 14 L38 30 Z" fill="#1A2B45"/>
+          <path d="M98 40 L108 14 L82 30 Z" fill="#1A2B45"/>
+          <ellipse cx="60" cy="76" rx="27" ry="31" fill="#F6F1E7"/>
+          <circle cx="42" cy="58" r="17" fill="#fff"/>
+          <circle cx="78" cy="58" r="17" fill="#fff"/>
+          <circle cx="44" cy="60" r="7.5" fill="#1A2B45"/>
+          <circle cx="76" cy="60" r="7.5" fill="#1A2B45"/>
+          <circle cx="47" cy="57" r="2.2" fill="#fff"/>
+          <circle cx="79" cy="57" r="2.2" fill="#fff"/>
+          <path d="M54 70 L66 70 L60 80 Z" fill="#F2A93B"/>
+          <path d="M92 50 Q108 40 104 62 Q96 58 92 50 Z" fill="#1A2B45"/>
+          <path d="M46 108 L42 118 M60 110 L60 120 M74 108 L78 118" stroke="#F2A93B" stroke-width="5" stroke-linecap="round" fill="none"/>
+        </svg>
+        <div class="mascot-bubble">내일도 같이 봐요! 👋</div>
       </div>
     </div>
 

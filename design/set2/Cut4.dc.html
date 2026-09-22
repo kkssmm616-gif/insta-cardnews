@@ -56,6 +56,24 @@
   .impact-value .arrow{color:#B0A896;font-size:28px;}
   .impact-value .after{font-size:44px;font-weight:900;color:#E8543E;}
 
+  .mascot-wrap{display:flex;align-items:flex-end;gap:16px;margin-top:28px;}
+  .mascot{width:64px;height:64px;flex-shrink:0;}
+  .mascot-bubble{
+    background:#fff;border:2px solid #1A2B45;border-radius:16px;
+    padding:9px 16px;font-size:20px;font-weight:800;color:#1A2B45;
+    position:relative;white-space:nowrap;
+  }
+  .mascot-bubble::before{
+    content:"";position:absolute;left:-10px;bottom:14px;
+    width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;
+    border-right:10px solid #1A2B45;
+  }
+  .mascot-bubble::after{
+    content:"";position:absolute;left:-7px;bottom:14px;
+    width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;
+    border-right:8px solid #fff;
+  }
+
   .main{flex:1;display:flex;flex-direction:column;justify-content:center;}
   .footer{padding-bottom:56px;}
   .bottom-meta{
@@ -104,6 +122,25 @@
           <span class="arrow">→</span>
           <span class="after">전월비 +1.93%↑ 재가속</span>
         </div>
+      </div>
+
+      <div class="mascot-wrap">
+        <svg class="mascot" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="60" cy="68" rx="44" ry="46" fill="#1A2B45"/>
+          <path d="M22 40 L12 14 L38 30 Z" fill="#1A2B45"/>
+          <path d="M98 40 L108 14 L82 30 Z" fill="#1A2B45"/>
+          <ellipse cx="60" cy="76" rx="27" ry="31" fill="#F6F1E7"/>
+          <circle cx="42" cy="58" r="17" fill="#fff"/>
+          <circle cx="78" cy="58" r="17" fill="#fff"/>
+          <circle cx="44" cy="60" r="7.5" fill="#1A2B45"/>
+          <circle cx="76" cy="60" r="7.5" fill="#1A2B45"/>
+          <circle cx="47" cy="57" r="2.2" fill="#fff"/>
+          <circle cx="79" cy="57" r="2.2" fill="#fff"/>
+          <path d="M54 70 L66 70 L60 80 Z" fill="#F2A93B"/>
+          <path d="M16 74 Q6 96 24 110 Q28 92 32 80 Z" fill="#1A2B45"/>
+          <path d="M46 108 L42 118 M60 110 L60 120 M74 108 L78 118" stroke="#F2A93B" stroke-width="5" stroke-linecap="round" fill="none"/>
+        </svg>
+        <div class="mascot-bubble">거래 없이 가격만 오르는 중</div>
       </div>
     </div>
 
