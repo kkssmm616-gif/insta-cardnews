@@ -1,0 +1,19 @@
+{
+  "_comment": "릴스 배경음악 로테이션 목록. 전부 Pixabay(pixabay.com/music) royalty-free 음원 - 저작자 표시 불필요, 상업적 이용 가능(단, 음원 파일 자체를 그대로 재배포하는 것만 금지, 영상 편집물에 삽입하는 건 라이선스상 허용됨). 각 파일은 원본에서 릴스 길이(~28초)에 맞게 앞부분만 잘라 페이드아웃을 넣고 음량을 정규화한 것.",
+  "tracks": [
+    { "file": "01-kornevmusic.mp3", "title": "Upbeat Happy Corporate", "artist": "kornevmusic", "source": "https://pixabay.com/music/search/upbeat%20corporate%20pop/" },
+    { "file": "02-the_mountain-a.mp3", "title": "Pop Upbeat - Upbeat Pop", "artist": "The_Mountain", "source": "https://pixabay.com/music/search/upbeat%20corporate%20pop/" },
+    { "file": "03-jonasblakewood.mp3", "title": "Upbeat Pop - Upbeat Pop Music", "artist": "JonasBlakewood", "source": "https://pixabay.com/music/search/upbeat%20corporate%20pop/" },
+    { "file": "04-top-flow.mp3", "title": "Corporate Upbeat Uplifting Motivational Success", "artist": "Top-Flow", "source": "https://pixabay.com/music/search/upbeat%20corporate%20pop/" },
+    { "file": "05-inplusmusic.mp3", "title": "Pop - Pop Music", "artist": "INPLUSMUSIC", "source": "https://pixabay.com/music/search/upbeat%20corporate%20pop/" },
+    { "file": "06-gr0za.mp3", "title": "Pop - Pop Music", "artist": "GR0ZA", "source": "https://pixabay.com/music/search/upbeat%20corporate%20pop/" },
+    { "file": "07-nastelbom.mp3", "title": "Upbeat - Upbeat Music", "artist": "NastelBom", "source": "https://pixabay.com/music/search/upbeat%20corporate%20pop/" },
+    { "file": "08-paulyudin.mp3", "title": "Upbeat - Upbeat Corporate", "artist": "PaulYudin", "source": "https://pixabay.com/music/search/upbeat%20corporate%20pop/" },
+    { "file": "09-the_mountain-b.mp3", "title": "Corporate Pop", "artist": "The_Mountain", "source": "https://pixabay.com/music/search/upbeat%20corporate%20pop/" },
+    { "file": "10-prettyjohn1.mp3", "title": "Corporate - Corporate Music", "artist": "prettyjohn1", "source": "https://pixabay.com/music/search/upbeat%20corporate%20pop/" },
+    { "file": "11-verclub_music.mp3", "title": "Upbeat", "artist": "Verclub_Music", "source": "https://pixabay.com/music/search/upbeat%20corporate%20pop/" },
+    { "file": "12-sunsides.mp3", "title": "Upbeat Happy Corporate", "artist": "SunSides", "source": "https://pixabay.com/music/search/upbeat%20corporate%20pop/" },
+    { "file": "13-sub_clair.mp3", "title": "Corporate", "artist": "Sub_Clair", "source": "https://pixabay.com/music/search/upbeat%20corporate%20pop/" },
+    { "file": "14-delosound.mp3", "title": "Corporate Upbeat Uplifting Motivational Success", "artist": "DELOSound", "source": "https://pixabay.com/music/search/upbeat%20corporate%20pop/" }
+  ]
+}

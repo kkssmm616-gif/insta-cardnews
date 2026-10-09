@@ -69,10 +69,22 @@ jobs:
           READY1="${{ steps.check.outputs.ready1 }}"
           READY2="${{ steps.check.outputs.ready2 }}"
           READY3="${{ steps.check.outputs.ready3 }}"
+
+          # 릴스 배경음악 로테이션: design/assets/bgm/ 폴더의 여러 곡 중
+          # 날짜(연중 일수)+세트 번호 기준으로 매번 다른 곡을 결정적으로 고른다
+          # (완전 무작위 대신 결정적으로 골라서, 같은 날짜로 재실행해도 같은 곡이 나오게 함).
+          mapfile -t BGM_FILES < <(ls design/assets/bgm/*.mp3 | sort)
+          BGM_COUNT=${#BGM_FILES[@]}
+          DOY=$(date -d "$DATE" +%j)
+
           for i in 1 2 3; do
             READY_VAR="READY$i"
             if [ "${!READY_VAR}" != "true" ]; then continue; fi
             node scripts/render-for-instagram.js "$DATE" "$i"
+
+            BGM_IDX=$(( (10#$DOY + i) % BGM_COUNT ))
+            BGM_FILE="${BGM_FILES[$BGM_IDX]}"
+            echo "- 세트 $i 배경음악: $BGM_FILE"
 
             DIR="docs/exports/${DATE}/${i}"
             LIST="$DIR/concat.txt"
@@ -83,7 +95,7 @@ jobs:
             done
             echo "file '$(readlink -f "$DIR/06-cut6.jpg")'" >> "$LIST"
             ffmpeg -y -f concat -safe 0 -i "$LIST" \
-              -stream_loop -1 -i design/assets/bgm.mp3 \
+              -stream_loop -1 -i "$BGM_FILE" \
               -vf "format=yuv420p" -r 30 -c:v libx264 -c:a aac -b:a 128k -shortest -movflags +faststart \
               "$DIR/reel.mp4"
             rm "$LIST"

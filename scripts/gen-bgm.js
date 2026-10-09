@@ -4,11 +4,14 @@
  * 결과물을 design/assets/bgm.mp3 에 덮어쓴다 (20초 루프, 릴스 영상 길이에 맞춰
  * instagram-publish.yml 이 -stream_loop -1 로 반복 재생시킴).
  *
- * 2026-10-09부터 design/assets/bgm.mp3은 이 스크립트 결과물이 아니라
- * Pixabay(royalty-free, 저작자 표시 불필요)에서 받은 실제 곡("Upbeat Happy
- * Corporate" by kornevmusic)의 앞부분을 잘라 쓰고 있다 — "합성음이 노래처럼
- * 안 들린다"는 피드백 때문. 이 스크립트는 그 전 단계에서 쓰던 합성 방식을
- * 남겨둔 것으로, 외부 음원을 다시 못 쓰게 될 경우의 대체 수단으로 유지한다.
+ * 2026-10-09부터는 이 스크립트의 결과물을 쓰지 않는다. "합성음이 노래처럼
+ * 안 들린다"는 피드백 → 먼저 Pixabay 실제 곡 1개로 교체했다가, 같은 날
+ * "곡이 몇 곡이냐, 다양하게 돌려달라"는 요청으로 Pixabay royalty-free
+ * 트랙 14개를 받아 design/assets/bgm/{01~14}-*.mp3 + manifest.json으로
+ * 로테이션 구조로 다시 바꿨다 (instagram-publish.yml이 날짜+세트 번호
+ * 기준으로 매번 다른 곡을 결정적으로 고름). 이 스크립트는 그 이전
+ * 합성 방식을 남겨둔 것으로, 외부 음원을 다시 못 쓰게 될 경우의 대체
+ * 수단으로 유지한다.
  */
 const { execFileSync } = require("child_process");
 const path = require("path");
